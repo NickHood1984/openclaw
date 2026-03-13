@@ -237,7 +237,7 @@ if [ -n "$RUNNER_CMD" ]; then
   export OPENCLAW_RESCUE_GATEWAY_LOG_FILE="$incident_dir/gateway-log.tail.txt"
   export OPENCLAW_RESCUE_FINGERPRINT="$fingerprint"
 
-  if bash -lc "$RUNNER_CMD" >"$incident_dir/runner.stdout" 2>"$incident_dir/runner.stderr"; then
+  if bash -c "$RUNNER_CMD" >"$incident_dir/runner.stdout" 2>"$incident_dir/runner.stderr"; then
     runner_status="ok"
   else
     runner_status="failed:$?"

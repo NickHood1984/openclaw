@@ -31,7 +31,7 @@ OUTPUT_FILE="$INCIDENT_DIR/claude-output.txt"
 
 summary_text="$(cat "$SUMMARY_FILE" 2>/dev/null || echo "unknown openclaw runtime failure")"
 
-cat >"$PROMPT_FILE" <<EOF
+cat >"$PROMPT_FILE" <<RESCUE_WATCHDOG_PROMPT_END
 An OpenClaw rescue watchdog detected a runtime failure.
 
 Goals:
@@ -64,7 +64,7 @@ Required steps:
 
 Incident summary:
 $summary_text
-EOF
+RESCUE_WATCHDOG_PROMPT_END
 
 cmd=(
   "$CLAUDE_BIN"
